@@ -10,7 +10,7 @@ scalapac is a near-enough port of @dmcquay's excellent [node-apac](https://githu
 
 #Installation
 
-The latest build of scalapac is always available as a .jar from the Downloads dropdown in GitHub.
+The latest build of scalapac is always available as a .jar from the Downloads dropdown in GitHub. This version was built against Scala 2.8.1 using sbt 0.7.5
 
 Note that the request signing in scalapac depends on the [Apache Commons Codec](http://commons.apache.org/codec/download_codec.cgi) - to run scalapac you will need commons-codec-1.5.jar in your classpath.
 

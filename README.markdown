@@ -59,7 +59,9 @@ Forking from GitHub and making changes to the code is easy if you use sbt:
     wget http://apache.mirrors.timporter.net//commons/codec/binaries/commons-codec-1.5-bin.tar.gz
     tar -xzvf commons-code-1.5-bin.tar.gz
     vi src/main/scala/example.scala
-    << Update example.scala to have your own Amazon credentials >>     
+
+Now update example.scala to include your own Amazon credentials, save and finish up with:
+
     cd ..    
     sbt
     > run

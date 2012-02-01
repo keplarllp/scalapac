@@ -70,7 +70,7 @@ You should see scalapac Compiling main sources, running ExampleItemSearch and th
 
 #Copyright and License
 
-scalapac is copyright (c) 2011 Alex Dean
+scalapac is copyright (c) 2011-2012 Orderly Ltd
 
 scalapac is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as

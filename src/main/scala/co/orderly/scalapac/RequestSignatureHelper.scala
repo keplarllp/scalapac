@@ -13,14 +13,16 @@
  */
 package co.orderly.scalapac
 
-import _root_.java.net.URLEncoder
+// Java
+import java.net.URLEncoder
+import javax.crypto.spec.SecretKeySpec
+import javax.crypto.Mac
 
-import _root_.javax.crypto.spec.SecretKeySpec
-import _root_.javax.crypto.Mac
-
-import _root_.org.apache.commons.codec.binary.Base64
-
+// Scala
 import scala.collection.immutable.TreeMap
+
+// commons-codec
+import org.apache.commons.codec.binary.Base64
 
 /**
  * A helper class to sign a given set of parameters ready for the Amazon Product API.
@@ -32,8 +34,8 @@ class RequestSignatureHelper(awsAccessKeyId:  String,
                              requestMethod:   String = "GET"
                              )
 {
-  val UTF8_CHARSET = "UTF-8";
-  val HMAC_SHA256_ALGORITHM = "HmacSHA256";
+  val UTF8_CHARSET = "UTF-8"
+  val HMAC_SHA256_ALGORITHM = "HmacSHA256"
 
   /**
    * Takes an ordered map of parameters, signs it and returns the map

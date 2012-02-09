@@ -21,10 +21,10 @@ object ExampleItemSearch {
   def main(args: Array[String]) {
 
     // Update this with your Amazon credentials before running
-  val opHelper = new OperationHelper(awsAccessKeyId     = "[YOUR AWS ID HERE]",
-                                     awsSecretKey       = "[YOUR AWS SECRET HERE]",
-                                     awsAssociateTagKey = "[YOUR ASSOCIATE TAG HERE]"
-                                     )
+    val opHelper = new OperationHelper(awsAccessKeyId     = "[YOUR AWS ID HERE]",
+                                       awsSecretKey       = "[YOUR AWS SECRET HERE]",
+                                       awsAssociateTagKey = "[YOUR ASSOCIATE TAG HERE]"
+                                       )
 
     // Or val (code, xml) = opHelper.execute(...
     opHelper.debug("ItemSearch", Map("SearchIndex"    -> "Books",

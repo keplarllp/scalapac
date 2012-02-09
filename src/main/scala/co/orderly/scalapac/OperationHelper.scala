@@ -13,12 +13,13 @@
  */
 package co.orderly.scalapac
 
+// Java
 import java.text.SimpleDateFormat
 import java.util.{Calendar, TimeZone}
-
 import java.net.{URL, URLConnection, HttpURLConnection}
 import java.io.{InputStream, IOException}
 
+// Scala
 import scala.collection.immutable.TreeMap
 import scala.xml._
 
@@ -28,13 +29,13 @@ import scala.xml._
 class OperationHelper(awsAccessKeyId:       String,
                       awsSecretKey:         String,
                       awsAssociateTagKey:   String,
-                      endPoint:             String = "ecs.amazonaws.com",
-                      baseUri:              String = "/onca/xml"
+                      endPoint:             String = "ecs.amazonaws.com"
                       )
 {
   // Definitions we use in the standard params
-  val VERSION = "2010-11-01"
-  val SERVICE = "AWSECommerceService"
+  val VERSION  = "2010-11-01"
+  val SERVICE  = "AWSECommerceService"
+  val BASE_URI = "/onca/xml"
 
   /**
    * Execute an operation against the Amazon Product API with the supplied arguments
@@ -42,7 +43,7 @@ class OperationHelper(awsAccessKeyId:       String,
    * Returns a tuple containing the return code and XML contents from the Amazon
    * Product API.
    */
-  def execute(operation: String, args: Map[String, String]): Tuple2[Int, Elem] = {
+  def execute(operation: String, args: Map[String, String]): (Int, Elem) = {
 
     // Put together the standard params with args for this operation
     val params = generateParams(operation, args)
@@ -51,12 +52,12 @@ class OperationHelper(awsAccessKeyId:       String,
     val helper = new RequestSignatureHelper(awsAccessKeyId = awsAccessKeyId,
                                             awsSecretKey = awsSecretKey,
                                             endPoint = endPoint,
-                                            requestUri = baseUri)
+                                            requestUri = BASE_URI)
     val signedParams = helper.sign(params)
     val queryString = helper.canonicalize(signedParams)
 
     // Construct the API URL from the above components
-    val url = new URL("http://" + endPoint + baseUri + "?" + queryString)
+    val url = new URL("http://" + endPoint + BASE_URI + "?" + queryString)
 
     // Because Amazon can throw 403s which XML.load doesn't like, load in a two-stage process
     val connection = url.openConnection() match {
@@ -75,7 +76,7 @@ class OperationHelper(awsAccessKeyId:       String,
     }
 
     val xml = XML.load(data)
-    return (responseCode, xml)
+    (responseCode, xml)
   }
 
   /**
@@ -107,11 +108,11 @@ class OperationHelper(awsAccessKeyId:       String,
     params += "AWSAccessKeyId" -> awsAccessKeyId
     params += "AssociateTag" -> awsAssociateTagKey
     params += "Timestamp" -> generateTimestamp()
+    params += "Service" -> SERVICE
 
     // Copy in all the args passed into this function
     args foreach ( (arg) => params += arg._1 -> arg._2)
-
-    return params
+    params
   }
 
   /**
@@ -121,6 +122,6 @@ class OperationHelper(awsAccessKeyId:       String,
 
       val dfm = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
       dfm.setTimeZone(TimeZone.getTimeZone("GMT"))
-      return dfm.format(Calendar.getInstance().getTime())
+      dfm.format(Calendar.getInstance().getTime())
   }
 }

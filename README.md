@@ -1,4 +1,4 @@
-# scalapac - a Scala client for the Amazon Product Advertising API #
+# scalapac - Amazon Product Advertising API Scala client #
 
 ## Overview
 

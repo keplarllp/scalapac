@@ -1,20 +1,22 @@
-scalapac - a Scala client for the Amazon Product Advertising API.
+# scalapac - a Scala client for the Amazon Product Advertising API #
+
+## Overview
 
 scalapac (Scala Amazon Product Advertising Client) allows you to access the Amazon Product Advertising API from Scala. [Learn more about the Amazon Product Advertising API](https://affiliate-program.amazon.com/gp/advertising/api/detail/main.html).
 
 scalapac is a thin wrapper around Amazon's API: it takes care of the request signatures, performs the HTTP requests, processing Amazon's response and then returns the response code and XML in a tuple ready for you to work with in Scala. scalapac is "operation agnostic": you simply pass in the operation (as a String) and the operation's parameters (as a Map) and receive the response in XML. So it's like you're working directly with the API, but without the hassle of signing your requests, handling 403s errors from Amazon and so on.
 
-#Credits
+## Credits
 
 scalapac is a near-enough port of @dmcquay's excellent [node-apac](https://github.com/dmcquay/node-apac), an equivalent Amazon Product Advertising Client for node.js. It also leans heavily on Alex Parvulescu's [Amazon Product Api REST Client in Scala](http://blog.pfa-labs.com/2009/08/amazon-product-api-rest-client-in-scala.html) blog post for the Scala request signing code. Many thanks Dustin and Alex.
 
-#Installation
+## Installation
 
 The latest build of scalapac is always available as a .jar from the Downloads dropdown in GitHub. This version was built against Scala 2.8.1 using sbt 0.7.5
 
 Note that the request signing in scalapac depends on the [Apache Commons Codec](http://commons.apache.org/codec/download_codec.cgi) - to run scalapac you will need commons-codec-1.5.jar in your classpath.
 
-#Quick Start
+## Quick Start
 
 First download and install the scalapac and commons-codec jars. Now fire up scala and load the jars into your classpath (changing the paths as appropriate):
 
@@ -45,7 +47,7 @@ When using scalapac in production, instead of the debug() method you should use 
 
     val (code, xml) = opHelper.execute("ItemSearch", Map(...
 
-#API Documentation
+## API Documentation
 
 All Amazon Product Advertising API documentation can be found on the AWS website:
 [API Reference](http://docs.amazonwebservices.com/AWSECommerceService/latest/DG/index.html?ProgrammingGuide.html)
@@ -68,7 +70,7 @@ Now update example.scala to include your own Amazon credentials, save and finish
 
 You should see scalapac Compiling main sources, running ExampleItemSearch and then displaying some XML results and a 200 response code.
 
-#Copyright and License
+## Copyright and License
 
 scalapac is copyright (c) 2011-2012 Orderly Ltd
 

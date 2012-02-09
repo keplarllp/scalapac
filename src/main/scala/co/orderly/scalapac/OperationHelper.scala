@@ -33,7 +33,7 @@ class OperationHelper(awsAccessKeyId:       String,
                       )
 {
   // Definitions we use in the standard params
-  val VERSION  = "2010-11-01"
+  val VERSION  = "2011-08-01"
   val SERVICE  = "AWSECommerceService"
   val BASE_URI = "/onca/xml"
 
